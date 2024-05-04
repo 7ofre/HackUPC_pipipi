@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 import pandas as pd
 
 def find_companions_by_date_location(traveler_name):
@@ -10,8 +10,8 @@ def find_companions_by_date_location(traveler_name):
     # Get the travel details of the specified traveler
     traveler_details = data[data['Traveller Name'] == traveler_name]
     
-    # Initialize an empty DataFrame to collect potential companions
-    potential_companions = pd.DataFrame()
+    # Initialize an empty list to collect potential companions
+    potential_companions = []
     
     # Check each trip by the traveler for potential companions
     for _, trip in traveler_details.iterrows():
@@ -23,35 +23,27 @@ def find_companions_by_date_location(traveler_name):
             (data['Traveller Name'] != traveler_name)
         ]
         
-        # Append overlapping travels to the potential_companions DataFrame
-        potential_companions = pd.concat([potential_companions, overlapping_travels], ignore_index=True)
+        # Append overlapping travels to the potential_companions list
+        for _, companion_trip in overlapping_travels.iterrows():
+            potential_companions.append({
+                'Traveller Name': companion_trip['Traveller Name'],
+                'Departure Date': companion_trip['Departure Date'].strftime('%Y-%m-%d'),
+                'Return Date': companion_trip['Return Date'].strftime('%Y-%m-%d')
+            })
     
-    # Select relevant information and remove any duplicates
-    companions_details = potential_companions[['Traveller Name', 'Departure Date', 'Return Date']].drop_duplicates()
-    
-    return companions_details
-# Assuming you have the data loaded in a DataFrame named 'travel_data'
-# Example usage:
-# companions = find_companions_by_date_location("Anderson Hudson", travel_data)
-# print(companions)
+    return potential_companions
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
+@app.route('/find-companions', methods=['POST'])
 @app.route('/find-companions', methods=['POST'])
 def indexPost():
     traveller_name = request.form['travellerName']
     companions = find_companions_by_date_location(traveller_name)
-    return companions.to_json()
+    return render_template('results.html', companions=companions)
 
 @app.route('/', methods=['GET'])
 def indexGet():
-    return """
-    <h1>Enter Your Input</h1>
-    <form method="post" action="/find-companions">
-        <input type="text" name="travellerName" placeholder="Enter your input" required>
-        <button type="submit">Submit</button>
-    </form>
-        """
-
+    return render_template('index.html')
 if __name__ == '__main__':
     app.run(debug=True)
