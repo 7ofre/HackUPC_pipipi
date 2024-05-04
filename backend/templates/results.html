@@ -16,10 +16,12 @@
                     <strong>Name:</strong> {{ companion['Name'] }}<br>
                     <strong>Departure Date:</strong> {{ companion['Departure Date'] }}<br>
                     <strong>Return Date:</strong> {{ companion['Return Date'] }}<br>
+                    <strong>Arrival City:</strong> {{ companion['Arrival City'] }}<br>
                     <strong>Shared Activities:</strong>
-                    <ul>
+                    <ul class="shared-activities">
                         {% for activity in companion['Shared Activities'] %}
-                            <li>{{ activity }}</li>
+                            {% set google_search_url = 'https://www.google.com/search?q=' + activity + '+in+' + companion['Arrival City'] %}
+                            <li><a href="{{ google_search_url }}" target="_blank">{{ activity }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -31,5 +33,3 @@
     </div>
 </body>
 </html>
-
-

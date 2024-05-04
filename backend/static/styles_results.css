@@ -50,3 +50,12 @@ ul.shared-activities li {
     margin-bottom: 8px;
     color: #fff; /* White text color for shared activities */
 }
+
+ul.shared-activities li a {
+    color: #fff; /* White text color for linked activities */
+    text-decoration: none; /* Remove underline from linked activities */
+}
+
+ul.shared-activities li a:hover {
+    text-decoration: underline; /* Add underline on hover for linked activities */
+}
