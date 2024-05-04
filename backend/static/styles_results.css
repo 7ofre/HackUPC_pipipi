@@ -1,21 +1,14 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
-
 .container {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #444; /* Dark container background */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 h1 {
-    color: #003366;
+    color: #ff66b3; /* Pink heading color */
     margin-bottom: 20px;
 }
 
@@ -27,10 +20,11 @@ ul {
 li {
     margin-bottom: 20px;
     padding: 20px;
-    background-color: #e6f2ff; /* Light blue background for companions' details */
-    border-left: 6px solid #003366; /* Dark blue left border */
+    background-color: #555; /* Dark pink background for companions' details */
+    border-left: 6px solid #ff66b3; /* Light pink left border */
     border-radius: 4px;
     transition: transform 0.3s ease-in-out;
+    color: #fff; /* White text color */
 }
 
 li:hover {
@@ -38,13 +32,13 @@ li:hover {
 }
 
 li.activity {
-    background-color: #cce5ff; /* Lighter blue background for shared activities */
+    background-color: #666; /* Darker pink background for shared activities */
     border-left: none; /* Remove left border for shared activities */
     padding-left: 40px; /* Add extra padding for shared activities */
 }
 
 strong {
-    color: #003366;
+    color: #ff66b3; /* Pink color for strong elements */
 }
 
 ul.shared-activities {
@@ -54,4 +48,5 @@ ul.shared-activities {
 
 ul.shared-activities li {
     margin-bottom: 8px;
+    color: #fff; /* White text color for shared activities */
 }

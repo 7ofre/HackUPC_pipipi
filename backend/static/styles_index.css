@@ -1,47 +1,50 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #333; /* Dark background color */
+    color: #f5f5f5; /* Light text color */
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #444; /* Dark container background */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 h1 {
-    color: #333;
+    color: #ff66b3; /* Pink heading color */
     margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 8px;
+    color: #ff66b3; /* Pink label color */
 }
 
 input[type="text"] {
     width: calc(100% - 4px);
     padding: 8px;
     margin-bottom: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #ff66b3; /* Pink border color for input */
     border-radius: 4px;
 }
 
 button {
     padding: 8px 16px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ff66b3; /* Pink button background color */
+    color: #fff; /* White button text color */
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #cc0066; /* Dark pink button hover color */
 }
+
 
