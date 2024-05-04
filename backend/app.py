@@ -1,7 +1,8 @@
 from flask import Flask, request
 import pandas as pd
 
-def find_companions_by_date_location(traveler_name, data):
+def find_companions_by_date_location(traveler_name):
+    data = pd.read_csv('dataset.csv')
     # Ensure date columns are in the correct datetime format
     data['Departure Date'] = pd.to_datetime(data['Departure Date'], format='%d/%m/%Y')
     data['Return Date'] = pd.to_datetime(data['Return Date'], format='%d/%m/%Y')
@@ -29,6 +30,10 @@ def find_companions_by_date_location(traveler_name, data):
     companions_details = potential_companions[['Traveller Name', 'Departure Date', 'Return Date']].drop_duplicates()
     
     return companions_details
+# Assuming you have the data loaded in a DataFrame named 'travel_data'
+# Example usage:
+# companions = find_companions_by_date_location("Anderson Hudson", travel_data)
+# print(companions)
 
 app = Flask(__name__)
 
@@ -36,8 +41,8 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         input_data = request.form['inputData']
-        output_data = find_companions_by_date_location(input_data, dataset.csv)
-        return output_data
+        output_data = find_companions_by_date_location(input_data)
+        return output_data.to_json()
     else:
         return """
         <h1>Enter Your Input</h1>
