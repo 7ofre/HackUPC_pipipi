@@ -37,18 +37,18 @@ def find_companions_by_date_location(traveler_name):
 
 app = Flask(__name__)
 
-@app.route('/', methods=['POST'])
+@app.route('/find-companions', methods=['POST'])
 def indexPost():
-    input_data = request.form['inputData']
-    output_data = find_companions_by_date_location(input_data)
-    return output_data.to_json()
+    traveller_name = request.form['travellerName']
+    companions = find_companions_by_date_location(traveller_name)
+    return companions.to_json()
 
 @app.route('/', methods=['GET'])
 def indexGet():
     return """
     <h1>Enter Your Input</h1>
-    <form method="post">
-        <input type="text" name="inputData" placeholder="Enter your input" required>
+    <form method="post" action="/find-companions">
+        <input type="text" name="travellerName" placeholder="Enter your input" required>
         <button type="submit">Submit</button>
     </form>
         """
