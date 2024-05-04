@@ -1,6 +1,7 @@
 import pandas as pd
 
-def find_companions_by_date_location(traveler_name, data):
+def find_companions_by_date_location(traveler_name):
+    data = pd.read_csv('dataset.csv')
     # Ensure date columns are in the correct datetime format
     data['Departure Date'] = pd.to_datetime(data['Departure Date'], format='%d/%m/%Y')
     data['Return Date'] = pd.to_datetime(data['Return Date'], format='%d/%m/%Y')
