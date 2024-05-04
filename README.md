@@ -1,3 +1,9 @@
 # HackUPC_pipipi
-# tontos tots
-# tonto tu Jofre
+
+## How to run
+
+```zsh
+pip install -r requirements.txt
+
+python3 app.py
+```
