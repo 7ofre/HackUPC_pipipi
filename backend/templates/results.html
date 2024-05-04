@@ -3,17 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Companion Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles_results.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Results</h1>
-        <ul>
+        <h1>Companion Results</h1>
+        {% if companions %}
+            <ul>
             {% for companion in companions %}
-                <li>{{ companion['Traveller Name'] }} - {{ companion['Departure Date'] }} to {{ companion['Return Date'] }}</li>
+                <li>
+                    <strong>Name:</strong> {{ companion['Name'] }}<br>
+                    <strong>Departure Date:</strong> {{ companion['Departure Date'] }}<br>
+                    <strong>Return Date:</strong> {{ companion['Return Date'] }}<br>
+                    <strong>Shared Activities:</strong>
+                    <ul>
+                        {% for activity in companion['Shared Activities'] %}
+                            <li>{{ activity }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
             {% endfor %}
-        </ul>
+            </ul>
+        {% else %}
+            <p>No companions found.</p>
+        {% endif %}
     </div>
 </body>
 </html>
+

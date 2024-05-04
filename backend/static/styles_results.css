@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
@@ -15,7 +15,7 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #003366;
     margin-bottom: 20px;
 }
 
@@ -25,14 +25,33 @@ ul {
 }
 
 li {
-    margin-bottom: 16px;
-    padding: 16px;
-    background-color: #f9f9f9;
-    border-left: 6px solid #007bff;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #e6f2ff; /* Light blue background for companions' details */
+    border-left: 6px solid #003366; /* Dark blue left border */
     border-radius: 4px;
     transition: transform 0.3s ease-in-out;
 }
 
 li:hover {
     transform: scale(1.02);
+}
+
+li.activity {
+    background-color: #cce5ff; /* Lighter blue background for shared activities */
+    border-left: none; /* Remove left border for shared activities */
+    padding-left: 40px; /* Add extra padding for shared activities */
+}
+
+strong {
+    color: #003366;
+}
+
+ul.shared-activities {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul.shared-activities li {
+    margin-bottom: 8px;
 }
